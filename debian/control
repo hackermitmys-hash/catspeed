@@ -1,0 +1,14 @@
+Source: catspeed
+Section: education
+Priority: optional
+Maintainer: catspeed
+Build-Depends: debhelper-compat (= 13), gcc, make
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+
+Package: catspeed
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: College laboratory program CLI
+ Catspeed is a command-line application for browsing and viewing
+ college laboratory programs.

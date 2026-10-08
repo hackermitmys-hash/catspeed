@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	$(MAKE)
+
+override_dh_auto_install:
+	install -Dm755 catspeed \
+		debian/catspeed/usr/bin/catspeed
+
+	mkdir -p debian/catspeed/usr/share/catspeed
+
+	cp -r data/* \
+		debian/catspeed/usr/share/catspeed/
