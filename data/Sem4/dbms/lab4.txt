@@ -1,0 +1,162 @@
+Question : Consider the following Restaurant database with the attributes:
+Id, Name, Address (Building, Street, Area, Pincode), Cuisine, Nearby Landmarks, Online Delivery (Yes/No), Famous for (Name of the Dish).
+Create a MongoDB collection with relevant data and execute the following MongoDB queries using mongosh:
+a) Write a query to list the name and address of all restaurants in Bangalore with Italian cuisine.
+b) Write a query to list the name, address, and nearby landmarks of all restaurants in Bangalore where Indian Thali is available.
+
+
+
+
+
+
+
+
+
+mongosh
+
+use restaurantDB
+
+db.createCollection("restaurants")
+
+
+
+db.restaurants.insertMany([
+{
+id: 1,
+name: "Taste of Italy",
+address: {
+building: "12A",
+street: "MG Road",
+area: "Bangalore",
+pincode: 560001
+},
+cuisine: "Italian",
+nearby_landmarks: "Brigade Road",
+online_delivery: "Yes",
+famous_for: "Pizza"
+},
+
+{
+id: 2,
+name: "South Thali Bhavan",
+address: {
+building: "45",
+street: "Jayanagar 4th Block",
+area: "Bangalore",
+pincode: 560011
+},
+cuisine: "Indian",
+nearby_landmarks: "Jayanagar Bus Stand",
+online_delivery: "Yes",
+famous_for: "Indian Thali"
+},
+
+{
+id: 3,
+name: "Spice Garden",
+address: {
+building: "78",
+street: "Indiranagar",
+area: "Bangalore",
+pincode: 560038
+},
+cuisine: "Indian",
+nearby_landmarks: "Metro Station",
+online_delivery: "No",
+famous_for: "Indian Thali"
+},
+
+{
+id: 4,
+name: "Pasta Palace",
+address: {
+building: "21",
+street: "Church Street",
+area: "Bangalore",
+pincode: 560001
+},
+cuisine: "Italian",
+nearby_landmarks: "UB City Mall",
+online_delivery: "Yes",
+famous_for: "Pasta"
+}
+])
+
+
+
+
+
+db.restaurants.find(
+{ "address.area": "Bangalore", cuisine: "Italian" },
+{ name: 1, address: 1, _id: 0 }
+)
+
+
+
+db.restaurants.find(
+{ "address.area": "Bangalore", famous_for: "Indian Thali" },
+{ name: 1, address: 1, nearby_landmarks: 1, _id: 0 }
+)
+
+
+
+
+
+
+
+
+
+
+
+
+What is MongoDB?
+      MongoDB is a NoSQL database that stores data in the form of JSON-like documents instead of tables and rows.
+
+
+What is mongosh?
+    mongosh is the MongoDB shell used to interact with the MongoDB server and execute commands.
+
+What is a Collection?
+    A collection is a group of documents in MongoDB. It is similar to a table in relational databases.
+
+What is a Document?
+   A document is a record in MongoDB stored as key-value pairs.
+Example
+{ id:1, name:"Taste of Italy", cuisine:"Italian" }
+
+What is _id in MongoDB?
+   _id is a unique identifier automatically created by MongoDB for each document.
+
+
+What is insertMany()?
+   insertMany() is used to insert multiple documents into a collection at the same time.
+Example
+db.restaurants.insertMany([...])
+
+
+What is find()?
+   find() is used to retrieve documents from a collection.
+Example
+db.restaurants.find()
+
+What is Projection in MongoDB?
+   Projection is used to display only selected fields in the output.
+Example
+{ name:1, address:1, _id:0 }
+
+
+What does “use restaurantDB” do?
+   It creates or switches to the database named restaurantDB.
+
+What is an Embedded Document?
+   An embedded document is a document inside another document.
+Example
+address:{ building:"12A", street:"MG Road" }
+
+Why is MongoDB called NoSQL?
+    MongoDB is called NoSQL because it does not use traditional SQL tables and rows. It stores data in document format.
+
+
+Difference between SQL and MongoDB
+   SQL → Table, Row, Column
+   MongoDB → Collection, Document, Field

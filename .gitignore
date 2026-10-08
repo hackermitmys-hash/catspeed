@@ -1,0 +1,10 @@
+catspeed
+*.o
+*.deb
+*.buildinfo
+*.changes
+debian/catspeed/
+debian/.debhelper/
+debian/files
+debian/*.substvars
+debian/tmp/

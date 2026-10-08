@@ -1,0 +1,172 @@
+Question : 
+Consider a Tourist Places database with fields: place, address (state), id, tourist attractions, best time to visit, transport, accommodation, food.
+Create a MongoDB collection with 10 records and write queries to:
+a) List all tourist places of Karnataka
+b) List all places sorted state-wise
+
+
+
+
+
+mongosh
+
+use touristDB
+
+db.createCollection("tourist_places")
+
+db.tourist_places.insertMany([
+{
+id: 1,
+place: "Mysore Palace",
+address: { state: "Karnataka" },
+tourist_attractions: "Royal Architecture",
+best_time: "Oct-Feb",
+transport: "Mysore Railway Station, Mysore Airport",
+accommodation: "Hotels in Mysore",
+food: "Mysore Pak"
+},
+
+{
+id: 2,
+place: "Coorg",
+address: { state: "Karnataka" },
+tourist_attractions: "Coffee Plantations",
+best_time: "Oct-Mar",
+transport: "Mysore Railway Station, Mangalore Airport",
+accommodation: "Homestays",
+food: "Pandi Curry"
+},
+
+{
+id: 3,
+place: "Hampi",
+address: { state: "Karnataka" },
+tourist_attractions: "Ancient Ruins",
+best_time: "Oct-Feb",
+transport: "Hospet Railway Station",
+accommodation: "Guest Houses",
+food: "South Indian Meals"
+},
+
+{
+id: 4,
+place: "Bangalore Palace",
+address: { state: "Karnataka" },
+tourist_attractions: "Royal Interiors",
+best_time: "All Year",
+transport: "Kempegowda Airport",
+accommodation: "Hotels in Bangalore",
+food: "Bisi Bele Bath"
+},
+
+{
+id: 5,
+place: "Goa Beaches",
+address: { state: "Goa" },
+tourist_attractions: "Beaches & Nightlife",
+best_time: "Nov-Feb",
+transport: "Goa Airport, Madgaon Railway Station",
+accommodation: "Beach Resorts",
+food: "Seafood"
+},
+
+{
+id: 6,
+place: "Taj Mahal",
+address: { state: "Uttar Pradesh" },
+tourist_attractions: "Wonder of World",
+best_time: "Oct-Mar",
+transport: "Agra Airport, Agra Cantt Railway Station",
+accommodation: "Hotels in Agra",
+food: "Petha"
+},
+
+{
+id: 7,
+place: "Jaipur City Palace",
+address: { state: "Rajasthan" },
+tourist_attractions: "Royal Heritage",
+best_time: "Oct-Mar",
+transport: "Jaipur Airport, Jaipur Railway Station",
+accommodation: "Heritage Hotels",
+food: "Dal Baati Churma"
+},
+
+{
+id: 8,
+place: "Kerala Backwaters",
+address: { state: "Kerala" },
+tourist_attractions: "Houseboats",
+best_time: "Nov-Feb",
+transport: "Cochin Airport",
+accommodation: "Houseboats & Resorts",
+food: "Appam & Stew"
+},
+
+{
+id: 9,
+place: "Ooty",
+address: { state: "Tamil Nadu" },
+tourist_attractions: "Hill Station",
+best_time: "Oct-Jun",
+transport: "Coimbatore Airport, Ooty Railway Station",
+accommodation: "Cottages",
+food: "Chocolate & Tea"
+},
+
+{
+id: 10,
+place: "Darjeeling",
+address: { state: "West Bengal" },
+tourist_attractions: "Tea Gardens",
+best_time: "Mar-Jun",
+transport: "Bagdogra Airport, New Jalpaiguri Railway Station",
+accommodation: "Hotels & Homestays",
+food: "Momos & Tea"
+}
+])
+
+
+
+
+
+
+
+
+
+
+
+
+db.tourist_places.find(
+{ "address.state": "Karnataka" },
+{ place: 1, address: 1, _id: 0 }
+)
+
+
+
+
+
+
+db.tourist_places.find().sort({ "address.state": 1 })
+
+
+
+
+
+db.tourist_places.find().sort({ "address.state": -1 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is Sorting in MongoDB?
+     Sorting arranges data in ascending (1) or descending (-1) order.
